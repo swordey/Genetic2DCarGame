@@ -79,16 +79,17 @@ class Brain:
 
         self.model.set_weights((new_weight,bias))
 
-    def mutate(self):
+    def mutate(self, wons):
         weights, bias = self.get_weights_separated()
         new_weights = []
-        for weight in weights:
-            for idx in range(weight.shape[0]):
-                for idy in range(weight.shape[1]):
-                    rand = random.uniform(0, 1)
-                    if rand < self.mutation_rate:
-                        change = (random.uniform(0, 4) - 2)
-                        weight[idx, idy] += change
+        for idx, weight in enumerate(weights):
+            if not wons[idx]:
+                for idx in range(weight.shape[0]):
+                    for idy in range(weight.shape[1]):
+                        rand = random.uniform(0, 1)
+                        if rand < self.mutation_rate:
+                            change = (random.uniform(0, 4) - 2)
+                            weight[idx, idy] += change
             new_weights.append(weight)
 
         self.set_weights_separated(new_weights,bias)

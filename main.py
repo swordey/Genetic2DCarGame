@@ -11,7 +11,7 @@ import numpy as np
 learn = True
 
 # Filename to save the model during learning
-filename = "Models/asdasd1"
+filename = "Models/test"
 
 # After how many generation should be the model saved.
 save_per_generation = 2
@@ -21,7 +21,7 @@ save_per_generation = 2
 show_population = True
 
 # Number of species per population
-species_per_population = 10
+species_per_population = 1000
 
 # How many fittest species could survive
 # without reproduction
@@ -172,7 +172,8 @@ class MyGame(GameWindow):
     def mutate_babies(self):
         """Mutate the babies of the parents
         """
-        self.brain.mutate()
+        wons = [car.won for car in self.get_cars()]
+        self.brain.mutate(wons)
 
     def save_brain_of_fittest(self):
         """Saves the brain of the fittest
