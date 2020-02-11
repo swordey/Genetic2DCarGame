@@ -21,7 +21,7 @@ save_per_generation = 2
 show_population = True
 
 # Number of species per population
-species_per_population = 1000
+species_per_population = 100
 
 # How many fittest species could survive
 # without reproduction
